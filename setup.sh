@@ -1,10 +1,10 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-BASH_PROFILE="$HOME/.bash_profile"
+BASHRC="$HOME/.bashrc"
 VIM_RC="$HOME/.vimrc"
 NVIM_RC="$HOME/.config/nvim/init.vim"
 
-rm $BASH_PROFILE
-ln -s $DIR/bash_profile $BASH_PROFILE
+rm $BASHRC
+ln -s $DIR/bashrc $BASHRC
 
 rm $VIM_RC
 ln -s $DIR/vimrc $VIM_RC
