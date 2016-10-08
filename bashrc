@@ -4,3 +4,5 @@ alias vim=nvim
 
 export VISUAL=nvim
 export EDITOR=$VISUAL
+
+alias open=xdg-open
