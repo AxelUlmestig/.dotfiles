@@ -3,6 +3,10 @@ syntax on
 set number
 set clipboard+=unnamedplus
 
+set noswapfile
+set nobackup
+set nowb
+
 "tabs as spaces
 set tabstop=8 softtabstop=0 expandtab shiftwidth=8 smarttab
 
