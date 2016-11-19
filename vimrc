@@ -8,7 +8,7 @@ set nobackup
 set nowb
 
 "tabs as spaces
-set tabstop=8 softtabstop=0 expandtab shiftwidth=8 smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 call plug#begin('~/.config/nvim/plugins')
 
@@ -19,3 +19,5 @@ Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'https://github.com/ElmCast/elm-vim'
 
 call plug#end()
+
+set vb
