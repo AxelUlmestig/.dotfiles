@@ -7,17 +7,50 @@ set noswapfile
 set nobackup
 set nowb
 
-"tabs as spaces
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
-call plug#begin('~/.config/nvim/plugins')
+set vb
 
-"nerdtree
-Plug 'https://github.com/scrooloose/nerdtree'
+set path=.,,**
 
-"elm
-Plug 'https://github.com/ElmCast/elm-vim'
+call plug#begin('~/.config/nvim/vimplug')
+
+Plug 'scrooloose/nerdtree'
+Plug 'dense-analysis/ale'
+Plug 'vim-airline/vim-airline' 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+"requires the silver searcher: https://github.com/ggreer/the_silver_searcher
+Plug 'mileszs/ack.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-fugitive'
+"requires ghc-mod: $ stack install hlint ghc-mod
+Plug 'eagletmt/ghcmod-vim'
+"requires stylish-haskell: $ stack install stylish-haskell
+Plug 'nbouscal/vim-stylish-haskell'
+"requires hindent: $ stack install hindent
+"Plug 'alx741/vim-hindent'
 
 call plug#end()
 
-set vb
+"silver searcher ag integration
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+map <C-p> :FZF<CR>
+map <C-f> :Ag<CR>
+map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeFind<CR>
+
+"copy current file path
+let mapleader = ","
+nnoremap <leader>Y :let @+ = expand('%:p')<CR>
+nnoremap <leader>y :let @+ = expand('%')<CR>
+
+"ctags
+set tags=./tags;
+
+"close tabs to the right
+map <C-k> :.+1,$tabdo :tabc<CR>
