@@ -8,7 +8,13 @@
 #
 # Port is forwarded to 22 in router
 Host pi
-  Hostname 78.82.177.186
+  Hostname 78.82.185.222
   Port 43439
   User pi
   IdentityFile ~/.ssh/id_rsa.pub
+
+Host ja-mailcatcher
+  Hostname ec2-54-246-153-247.eu-west-1.compute.amazonaws.com
+  User ubuntu
+  IdentityFile ~/.ssh/jointacademy-services.pem
+

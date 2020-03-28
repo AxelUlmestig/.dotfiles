@@ -27,12 +27,13 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
-"requires ghc-mod: $ stack install hlint ghc-mod
-Plug 'eagletmt/ghcmod-vim'
+""requires ghc-mod: $ stack install hlint ghc-mod
+"Plug 'eagletmt/ghcmod-vim'
 "requires stylish-haskell: $ stack install stylish-haskell
 Plug 'nbouscal/vim-stylish-haskell'
 "requires hindent: $ stack install hindent
 "Plug 'alx741/vim-hindent'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
@@ -54,3 +55,9 @@ set tags=./tags;
 
 "close tabs to the right
 map <C-k> :.+1,$tabdo :tabc<CR>
+
+"ale configuration
+let g:ale_linters = {
+\ 'sql': [],
+\ 'haskell': ['hie', 'hlint']
+\}
