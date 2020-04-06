@@ -59,5 +59,6 @@ map <C-k> :.+1,$tabdo :tabc<CR>
 "ale configuration
 let g:ale_linters = {
 \ 'sql': [],
-\ 'haskell': ['hie', 'hlint']
+\ 'haskell': ['hie', 'hlint'],
+\ 'bash': ['shellcheck']
 \}
