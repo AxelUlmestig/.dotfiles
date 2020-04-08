@@ -65,4 +65,4 @@ let g:ale_linters = {
 
 "sqlformat comes from this repo https://github.com/andialbrecht/sqlparse
 "% gets expanded to current filename
-autocmd BufWrite *.sql execute "%!sqlformat --reindent --keywords lower --indent_width 2 --indent_after_first --indent_columns %" | w
+autocmd BufWritePost *.sql silent execute "%!sqlformat --reindent --keywords lower --indent_width 2 --indent_after_first --indent_columns %" | w
