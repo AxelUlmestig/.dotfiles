@@ -58,7 +58,11 @@ map <C-k> :.+1,$tabdo :tabc<CR>
 
 "ale configuration
 let g:ale_linters = {
-\ 'sql': [],
+\ 'sql': ['sqlint'],
 \ 'haskell': ['hie', 'hlint'],
 \ 'bash': ['shellcheck']
 \}
+
+"sqlformat comes from this repo https://github.com/andialbrecht/sqlparse
+"% gets expanded to current filename
+autocmd BufWrite *.sql execute "%!sqlformat --reindent --keywords lower --indent_width 2 --indent_after_first --indent_columns %" | w
