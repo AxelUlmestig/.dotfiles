@@ -34,6 +34,7 @@ Plug 'nbouscal/vim-stylish-haskell'
 "requires hindent: $ stack install hindent
 "Plug 'alx741/vim-hindent'
 Plug 'leafgarland/typescript-vim'
+Plug 'andys8/vim-elm-syntax'
 
 call plug#end()
 
@@ -50,6 +51,9 @@ let mapleader = ","
 nnoremap <leader>Y :let @+ = expand('%:p')<CR>
 nnoremap <leader>y :let @+ = expand('%')<CR>
 
+"format json
+nnoremap <leader>j :%! jq .<CR>
+
 "ctags
 set tags=./tags;
 
@@ -65,4 +69,4 @@ let g:ale_linters = {
 
 "sqlformat comes from this repo https://github.com/andialbrecht/sqlparse
 "% gets expanded to current filename
-autocmd BufWritePost *.sql silent execute "%!sqlformat --reindent --keywords lower --indent_width 2 --indent_after_first --indent_columns %" | w
+"autocmd BufWritePost *.sql silent execute "%!sqlformat --reindent --keywords lower --indent_width 2 --indent_after_first --indent_columns %" | w
