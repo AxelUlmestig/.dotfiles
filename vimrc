@@ -6,6 +6,7 @@ set clipboard+=unnamedplus
 set noswapfile
 set nobackup
 set nowb
+set nowrap
 
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
@@ -21,6 +22,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 "requires the silver searcher: https://github.com/ggreer/the_silver_searcher
+"  and ag: sudo apt install silversearcher-ag
 Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
@@ -35,6 +37,7 @@ Plug 'nbouscal/vim-stylish-haskell'
 "Plug 'alx741/vim-hindent'
 Plug 'leafgarland/typescript-vim'
 Plug 'andys8/vim-elm-syntax'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -63,10 +66,40 @@ map <C-k> :.+1,$tabdo :tabc<CR>
 "ale configuration
 let g:ale_linters = {
 \ 'sql': ['sqlint'],
-\ 'haskell': ['hie', 'hlint'],
+\ 'haskell': ['hlint'],
 \ 'bash': ['shellcheck']
 \}
 
 "sqlformat comes from this repo https://github.com/andialbrecht/sqlparse
 "% gets expanded to current filename
 "autocmd BufWritePost *.sql silent execute "%!sqlformat --reindent --keywords lower --indent_width 2 --indent_after_first --indent_columns %" | w
+
+"coc stuff
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"set the text colour
+highlight CocErrorFloat ctermfg=black
+highlight CocWarningFloat ctermfg=black
+highlight CocInfoFloat ctermfg=black
+highlight CocHintFloat ctermfg=black
