@@ -13,12 +13,8 @@ Host pi
   User pi
   IdentityFile ~/.ssh/id_rsa.pub
 
-Host ja-mailcatcher
-  Hostname ec2-54-246-153-247.eu-west-1.compute.amazonaws.com
-  User ubuntu
-  IdentityFile ~/.ssh/jointacademy-services.pem
-
-Host leif
-  Hostname 192.168.128.94
-  User axelulmestig
-  IdentityFile ~/.ssh/id_ed25519.pub
+Host debian-server
+  Hostname 37.46.184.77
+  Port 22
+  User axel
+  IdentityFile ~/.ssh/id_rsa.pub

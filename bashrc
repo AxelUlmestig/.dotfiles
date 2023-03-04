@@ -140,3 +140,12 @@ eval "$(rbenv init -)"
 alias ctag-jojnts='ctags -R --exclude=.git --exclude=bin --exclude=angular --exclude=public .'
 [ -f "/home/axel/.ghcup/env" ] && source "/home/axel/.ghcup/env" # ghcup-env
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+# Android
+
+PATH=$PATH:/home/axel/Android/Sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
