@@ -118,7 +118,7 @@ fi
 
 # CUSTOM STUFF
 
-PATH=$PATH:~/.rbenv/bin:/root/.local/bin:~/.local/bin
+PATH=$PATH:/root/.local/bin:~/.local/bin
 
 export PS1="\t \W \$ "
 
@@ -133,13 +133,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval "$(rbenv init -)"
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 alias ctag-jojnts='ctags -R --exclude=.git --exclude=bin --exclude=angular --exclude=public .'
 [ -f "/home/axel/.ghcup/env" ] && source "/home/axel/.ghcup/env" # ghcup-env
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 # Android
 
