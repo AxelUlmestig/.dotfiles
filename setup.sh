@@ -44,3 +44,19 @@ if [ "$(uname -s)" = "Linux" ]; then
   sudo ln -s $DIR/se_keyboard_layout $US_SE_KEYBOARD_LAYOUT
 fi
 
+if ! command -v ghcup &> /dev/null
+then
+  sudo apt install build-essential curl libffi-dev libffi7 libgmp-dev libgmp10 libncurses-dev libncurses5 libtinfo5
+  curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+else
+  echo "GHCup already found, skipping download"
+fi
+
+if ! command -v spotify &> /dev/null
+then
+  curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+  echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+  sudo apt-get update && sudo apt-get install spotify-client
+else
+  echo "Spotify already found, skipping download"
+fi
