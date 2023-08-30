@@ -39,6 +39,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'andys8/vim-elm-syntax'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -48,7 +49,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 map <C-p> :FZF<CR>
 map <C-f> :Ag<CR>
 map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFind<CR>
+map <C-b> :NERDTreeFind<CR>
 
 "copy current file path
 let mapleader = ","
