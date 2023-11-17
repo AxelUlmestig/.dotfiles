@@ -60,3 +60,6 @@ then
 else
   echo "Spotify already found, skipping download"
 fi
+
+sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt install neovim -y

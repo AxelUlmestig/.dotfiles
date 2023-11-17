@@ -148,3 +148,5 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 [ -f "/home/axel/.ghcup/env" ] && source "/home/axel/.ghcup/env" # ghcup-env
+
+eval "$(direnv hook bash)"
