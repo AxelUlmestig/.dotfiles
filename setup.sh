@@ -44,6 +44,9 @@ if [ "$(uname -s)" = "Linux" ]; then
   sudo ln -s $DIR/se_keyboard_layout $US_SE_KEYBOARD_LAYOUT
 fi
 
+# set the caps lock key to behave like esc
+sudo sed -i 's/XKBOPTIONS=.*/XKBOPTIONS="caps:escape"/g' /etc/default/keyboard
+
 if ! command -v ghcup &> /dev/null
 then
   sudo apt install -y build-essential curl libffi-dev libffi7 libgmp-dev libgmp10 libncurses-dev libncurses5 libtinfo5
