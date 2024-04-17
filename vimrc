@@ -36,8 +36,16 @@ Plug 'nbouscal/vim-stylish-haskell'
 "requires hindent: $ stack install hindent
 "Plug 'alx741/vim-hindent'
 Plug 'leafgarland/typescript-vim'
-Plug 'andys8/vim-elm-syntax'
+"Plug 'andys8/vim-elm-syntax'
+Plug 'elmcast/elm-vim'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'neovim/nvim-lsp'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete-lsp'
+Plug 'ervandew/supertab'
+Plug 'Chiel92/vim-autoformat'
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'github/copilot.vim'
 

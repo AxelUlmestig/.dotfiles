@@ -18,3 +18,8 @@ Host debian-server
   Port 22
   User axel
   IdentityFile ~/.ssh/id_rsa.pub
+
+Host aws.organize.party
+  Hostname ec2-16-171-135-92.eu-north-1.compute.amazonaws.com
+  User admin
+  IdentityFile ~/.ssh/aws.organize.party.pem
