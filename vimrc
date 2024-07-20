@@ -48,6 +48,7 @@ Plug 'Chiel92/vim-autoformat'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'github/copilot.vim'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -79,6 +80,9 @@ let g:ale_linters = {
 \ 'haskell': ['hlint'],
 \ 'bash': ['shellcheck']
 \}
+
+"rustfmt on save
+let g:rustfmt_autosave = 1
 
 "sqlformat comes from this repo https://github.com/andialbrecht/sqlparse
 "% gets expanded to current filename
