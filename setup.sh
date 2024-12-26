@@ -47,6 +47,17 @@ fi
 # set the caps lock key to behave like esc
 sudo sed -i 's/XKBOPTIONS=.*/XKBOPTIONS="caps:escape"/g' /etc/default/keyboard
 
+if ! command -v nix &> /dev/null
+then
+  sh <(curl -L https://nixos.org/nix/install) --no-daemon
+else
+  echo "Nix already found, skipping download"
+fi
+
+# install a bunch of stuff needed by ghcup
+sudo apt update
+sudo apt install -y build-essential curl libffi-dev libffi8 libgmp-dev libgmp10 libncurses-dev pkg-config
+
 if ! command -v ghcup &> /dev/null
 then
   sudo apt install -y build-essential curl libffi-dev libffi7 libgmp-dev libgmp10 libncurses-dev libncurses5 libtinfo5
