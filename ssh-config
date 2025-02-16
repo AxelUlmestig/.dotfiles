@@ -8,7 +8,8 @@
 #
 # Port is forwarded to 22 in router
 Host pi
-  Hostname 37.46.184.77
+  # Hostname 78.69.0.15
+  Hostname organize.party
   Port 41559
   User pi
   IdentityFile ~/.ssh/id_rsa.pub
