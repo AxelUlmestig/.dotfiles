@@ -49,8 +49,14 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'neovim/nvim-lspconfig'
 Plug 'github/copilot.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+"color scheme
+Plug 'rebelot/kanagawa.nvim'
 
 call plug#end()
+
+colorscheme kanagawa
 
 "silver searcher ag integration
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -159,7 +165,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'hls' }
+local servers = { 'pyright', 'rust_analyzer', 'hls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -170,4 +176,16 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
+lua <<EOF
 
+require('nvim-treesitter.configs').setup({
+  ensure_installed = { "haskell", "lua", "python", "javascript", "typescript", "rust" },
+  sync_install = false,
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+})
+
+EOF
