@@ -47,7 +47,7 @@ Plug 'ervandew/supertab'
 Plug 'Chiel92/vim-autoformat'
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'github/copilot.vim'
+"Plug 'github/copilot.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -90,34 +90,6 @@ let g:ale_linters = {
 "rustfmt on save
 let g:rustfmt_autosave = 1
 
-"sqlformat comes from this repo https://github.com/andialbrecht/sqlparse
-"% gets expanded to current filename
-"autocmd BufWritePost *.sql silent execute "%!sqlformat --reindent --keywords lower --indent_width 2 --indent_after_first --indent_columns %" | w
-
-""coc stuff
-"" use <tab> for trigger completion and navigate to the next complete item
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~ '\s'
-"endfunction
-"
-"inoremap <silent><expr> <Tab>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<Tab>" :
-"      \ coc#refresh()
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~ '\s'
-"endfunction
-"
-"inoremap <silent><expr> <Tab>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<Tab>" :
-"      \ coc#refresh()
-"
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 "set the text colour
 highlight CocErrorFloat ctermfg=black
 highlight CocWarningFloat ctermfg=black
@@ -126,7 +98,16 @@ highlight CocHintFloat ctermfg=black
 
 "LSP config
 lua << EOF
-local nvim_lsp = require('lspconfig')
+vim.lsp.config('*', {
+  root_markers = { '.git' },
+})
+
+vim.lsp.config('hs_ls', {
+  cmd = { 'haskell-language-server-wrapper' },
+  filetypes = { 'haskell' },
+})
+
+vim.lsp.enable('hs_ls')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -162,30 +143,5 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'hls' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
 EOF
 
-lua <<EOF
-
-require('nvim-treesitter.configs').setup({
-  ensure_installed = { "haskell", "lua", "python", "javascript", "typescript", "rust" },
-  sync_install = false,
-  auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-})
-
-EOF
