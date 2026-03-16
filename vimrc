@@ -28,13 +28,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rails'
-"Plug 'tpope/vim-fugitive'
-""requires ghc-mod: $ stack install hlint ghc-mod
-"Plug 'eagletmt/ghcmod-vim'
-"requires stylish-haskell: $ stack install stylish-haskell
-Plug 'nbouscal/vim-stylish-haskell'
-"requires hindent: $ stack install hindent
-"Plug 'alx741/vim-hindent'
 Plug 'leafgarland/typescript-vim'
 "Plug 'andys8/vim-elm-syntax'
 Plug 'elmcast/elm-vim'
@@ -105,7 +98,12 @@ vim.lsp.config('*', {
 vim.lsp.config('hs_ls', {
   cmd = { 'haskell-language-server-wrapper', '--lsp' },
   filetypes = { 'haskell' },
-  root_markers = { 'cabal.project', '*.cabal' }
+  root_markers = { 'cabal.project', '*.cabal' },
+  settings = {
+    haskell = {
+      formattingProvider = "stylish-haskell"
+    }
+  },
 })
 
 vim.lsp.enable('hs_ls')
@@ -158,6 +156,14 @@ vim.api.nvim_create_autocmd({ 'CursorHold' }, {
 
 -- Time (in ms) until the CursorHold kicks in. Default is 4000 ms
 vim.o.updatetime = 300
+
+-- Auto-format on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.hs',
+  callback = function()
+    vim.lsp.buf.format({ name = "hs_ls" })
+  end,
+})
 
 EOF
 
