@@ -14,48 +14,65 @@ set vb
 
 set path=.,,**
 
-call plug#begin('~/.config/nvim/vimplug')
+lua << EOF
+  vim.pack.add({
+    'https://github.com/preservim/nerdtree',
 
-Plug 'scrooloose/nerdtree'
-Plug 'dense-analysis/ale'
-Plug 'vim-airline/vim-airline' 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-"requires the silver searcher: https://github.com/ggreer/the_silver_searcher
-"  and ag: sudo apt install silversearcher-ag
-Plug 'mileszs/ack.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-surround'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-rails'
-Plug 'leafgarland/typescript-vim'
-"Plug 'andys8/vim-elm-syntax'
-Plug 'elmcast/elm-vim'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    -- sudo apt install -y ripgrep fd-find
+    'https://github.com/nvim-telescope/telescope.nvim',
+    'https://github.com/nvim-lua/plenary.nvim',
+    'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
 
-Plug 'neovim/nvim-lsp'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-lsp'
-Plug 'ervandew/supertab'
-Plug 'Chiel92/vim-autoformat'
+    'https://github.com/vim-airline/vim-airline',
+    'https://github.com/nvim-treesitter/nvim-treesitter',
+    'https://github.com/rebelot/kanagawa.nvim', -- colour scheme
+  })
+EOF
 
-Plug 'neovim/nvim-lspconfig'
-"Plug 'github/copilot.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-"color scheme
-Plug 'rebelot/kanagawa.nvim'
-
-call plug#end()
+" call plug#begin('~/.config/nvim/vimplug')
+"
+" Plug 'scrooloose/nerdtree'
+" Plug 'dense-analysis/ale'
+" Plug 'vim-airline/vim-airline'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" "requires the silver searcher: https://github.com/ggreer/the_silver_searcher
+" "  and ag: sudo apt install silversearcher-ag
+" Plug 'mileszs/ack.vim'
+" Plug 'itchyny/lightline.vim'
+" Plug 'tpope/vim-surround'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'tpope/vim-rails'
+" Plug 'leafgarland/typescript-vim'
+" "Plug 'andys8/vim-elm-syntax'
+" Plug 'elmcast/elm-vim'
+" "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"
+" Plug 'neovim/nvim-lsp'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete-lsp'
+" Plug 'ervandew/supertab'
+" Plug 'Chiel92/vim-autoformat'
+"
+" Plug 'neovim/nvim-lspconfig'
+" "Plug 'github/copilot.vim'
+" Plug 'rust-lang/rust.vim'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"
+" "color scheme
+" Plug 'rebelot/kanagawa.nvim'
+"
+" call plug#end()
 
 colorscheme kanagawa
 
 "silver searcher ag integration
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-map <C-p> :FZF<CR>
-map <C-f> :Ag<CR>
+" map <C-p> :FZF<CR>
+map <C-p> :Telescope find_files<CR>
+" map <C-f> :Ag<CR>
+map <C-f> :Telescope live_grep<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :NERDTreeFind<CR>
 
