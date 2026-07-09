@@ -136,7 +136,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 alias ctag-jojnts='ctags -R --exclude=.git --exclude=bin --exclude=angular --exclude=public .'
-#[ -f "/home/axel/.ghcup/env" ] && source "/home/axel/.ghcup/env" # ghcup-env
 
 # Android
 
@@ -147,10 +146,11 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-[ -f "/home/axel/.ghcup/env" ] && source "/home/axel/.ghcup/env" # ghcup-env
 
 eval "$(direnv hook bash)"
 
 . "$HOME/.cargo/env"
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
+[ -f "/home/axel/.ghcup/env" ] && . "/home/axel/.ghcup/env" # ghcup-env

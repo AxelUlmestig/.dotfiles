@@ -1,3 +1,5 @@
+set -ex
+
 DIR=$( cd $( dirname $BASH_SOURCE[0] ) && pwd )
 BASHRC=$HOME/.bashrc
 
@@ -28,6 +30,8 @@ ln -s $DIR/ghci $GHCI
 mkdir -p $HOME/.ssh
 rm -f $SSH_CONFIG
 ln -s $DIR/ssh-config $SSH_CONFIG
+
+sudo apt install -y curl
 
 if [ ! -f "$VIM_PLUG_LOCATION" ]; then
   sh -c "curl -fLo \"$VIM_PLUG_LOCATION\" \
@@ -60,20 +64,23 @@ sudo apt install -y build-essential curl libffi-dev libffi8 libgmp-dev libgmp10 
 
 if ! command -v ghcup &> /dev/null
 then
-  sudo apt install -y build-essential curl libffi-dev libffi7 libgmp-dev libgmp10 libncurses-dev libncurses5 libtinfo5
+  sudo apt install -y build-essential curl libffi-dev libgmp-dev libgmp10 libncurses-dev
   curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 else
   echo "GHCup already found, skipping download"
 fi
 
-if ! command -v spotify &> /dev/null
-then
-  curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-  echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-  sudo apt update && sudo apt install -y spotify-client
-else
-  echo "Spotify already found, skipping download"
-fi
+# if ! command -v spotify &> /dev/null
+# then
+#   curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+#   echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+#   sudo apt update && sudo apt install -y spotify-client
+# else
+#   echo "Spotify already found, skipping download"
+# fi
 
-sudo add-apt-repository ppa:neovim-ppa/stable -y
-sudo apt install neovim -y
+# sudo add-apt-repository ppa:neovim-ppa/stable -y
+# sudo apt install neovim -y
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+chmod u+x nvim-linux-x86_64.appimage
+sudo mv nvim-linux-x86_64.appimage /usr/bin/nvim
