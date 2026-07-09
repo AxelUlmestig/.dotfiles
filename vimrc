@@ -78,7 +78,7 @@ map <C-p> :Telescope find_files<CR>
 " map <C-f> :Ag<CR>
 map <C-f> :Telescope live_grep<CR>
 map <C-n> :NERDTreeToggle<CR>
-map <C-b> :NERDTreeFind<CR>
+map <C-h> :NERDTreeFind<CR>
 
 "copy current file path
 let mapleader = ","
