@@ -26,7 +26,11 @@ lua << EOF
     'https://github.com/vim-airline/vim-airline',
     'https://github.com/nvim-treesitter/nvim-treesitter',
     'https://github.com/rebelot/kanagawa.nvim', -- colour scheme
+
+    'https://github.com/ElmCast/elm-vim',
   })
+
+  require("telescope").setup()
 EOF
 
 " call plug#begin('~/.config/nvim/vimplug')
