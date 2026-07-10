@@ -9,8 +9,8 @@ NVIM_RC=$NVIM_HOME/init.vim
 VIM_RC=$HOME/.vimrc
 GHCI=$HOME/.ghci
 TMUX_CONF=$HOME/.tmux.conf
-
 SSH_CONFIG=$HOME/.ssh/config
+KEYD_CONFIG=/etc/keyd/default.conf
 
 US_SE_KEYBOARD_LAYOUT=/usr/share/X11/xkb/symbols/us_se
 
@@ -33,6 +33,10 @@ ln -s $DIR/ssh-config $SSH_CONFIG
 
 rm -f $TMUX_CONF
 ln -s $DIR/tmux.conf $TMUX_CONF
+
+# install keyd and then run: sudo systemctl enable --now keyd
+sudo rm -f $KEYD_CONFIG
+sudo cp $DIR/keyd-default.conf
 
 sudo apt update
 sudo apt install -y curl
