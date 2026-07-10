@@ -36,7 +36,7 @@ ln -s $DIR/tmux.conf $TMUX_CONF
 
 # install keyd and then run: sudo systemctl enable --now keyd
 sudo rm -f $KEYD_CONFIG
-sudo cp $DIR/keyd-default.conf
+sudo cp $DIR/keyd-default.conf $KEYD_CONFIG
 
 sudo apt update
 sudo apt install -y curl
