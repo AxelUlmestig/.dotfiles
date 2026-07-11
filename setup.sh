@@ -89,6 +89,9 @@ fi
 # sudo add-apt-repository ppa:neovim-ppa/stable -y
 # sudo apt install neovim -y
 
+# needed to search for files in vim
+sudo apt install -y ripgrep
+
 if ! command -v nvim &> /dev/null
 then
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
