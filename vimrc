@@ -28,6 +28,7 @@ lua << EOF
     'https://github.com/rebelot/kanagawa.nvim', -- colour scheme
 
     'https://github.com/ElmCast/elm-vim',
+    'https://github.com/airblade/vim-gitgutter',
   })
 
   require("telescope").setup()
